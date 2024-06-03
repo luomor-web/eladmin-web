@@ -34,6 +34,13 @@ module.exports = {
           '^/api': 'bsc'
         }
       },
+      '/bsc': {
+        target: process.env.VUE_APP_BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/bsc': 'bsc'
+        }
+      },
       '/auth': {
         target: process.env.VUE_APP_BASE_API,
         changeOrigin: true,
