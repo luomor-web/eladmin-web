@@ -171,7 +171,7 @@ export default {
       }
     },
     beforeInit() {
-      this.url = 'api/logs/user'
+      this.url = 'bsc/logs/user'
       return true
     },
     cropUploadSuccess(jsonData, field) {
