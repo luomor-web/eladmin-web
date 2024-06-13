@@ -3,21 +3,21 @@ const baseUrl = process.env.VUE_APP_BASE_API === '/' ? '' : process.env.VUE_APP_
 const api = {
   state: {
     // 部署包上传
-    deployUploadApi: baseUrl + '/api/deploy/upload',
+    deployUploadApi: baseUrl + '/bsc/deploy/upload',
     // SQL脚本上传
-    databaseUploadApi: baseUrl + '/api/database/upload',
+    databaseUploadApi: baseUrl + '/bsc/database/upload',
     // 图片上传
-    imagesUploadApi: baseUrl + '/api/localStorage/pictures',
+    imagesUploadApi: baseUrl + '/bsc/localStorage/pictures',
     // 修改头像
-    updateAvatarApi: baseUrl + '/api/users/updateAvatar',
+    updateAvatarApi: baseUrl + '/bsc/users/updateAvatar',
     // 上传文件到七牛云
-    qiNiuUploadApi: baseUrl + '/api/qiNiuContent',
+    qiNiuUploadApi: baseUrl + '/bsc/qiNiuContent',
     // Sql 监控
     sqlApi: baseUrl + '/druid/index.html',
     // swagger
     swaggerApi: baseUrl + '/doc.html',
     // 文件上传
-    fileUploadApi: baseUrl + '/api/localStorage',
+    fileUploadApi: baseUrl + '/bsc/localStorage',
     // baseUrl，
     baseApi: baseUrl
   }
