@@ -76,7 +76,7 @@
 <script>
 import { createCtFileBatch } from '@/api/lillia-file-batch'
 import { addCtFileWithBatch, deleteCtFileWithBatch } from '@/api/lillia-file'
-import uploadPath from '@/api/storage'
+import { uploadPath } from '@/api/storage'
 import { getToken } from '@/utils/auth'
 
 export default {
@@ -127,6 +127,7 @@ export default {
   },
   methods: {
     init: function() {
+      console.log(this.uploadPath)
       const random = parseInt(Math.random() * 100000)
       this.dataForm.uploadName = '批次-' + this.getNo() + '-' + random
 
