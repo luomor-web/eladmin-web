@@ -164,6 +164,7 @@ export default {
               status: 0
               updateTime: 1599446451
               uploadName: "批次-2020-09-07 10:40:01-80733"*/
+              console.log(response)
               this.ctFileBatchId = response.data.data.ctFileBatchId
               this.dialogFormVisible = false
               this.$notify.success({
@@ -172,6 +173,8 @@ export default {
               })
             })
             .catch(response => {
+              // message
+              console.log(response)
               this.$notify.error({
                 title: '失败',
                 message: response.data.errmsg
