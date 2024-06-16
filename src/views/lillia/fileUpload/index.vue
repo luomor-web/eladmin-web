@@ -44,7 +44,7 @@
         class="upload-demo"
         list-type="text"
         :headers="headers"
-        :action="add"
+        :action="uploadPath"
         :on-preview="handlePictureCardPreview"
         :on-success="handleGalleryUrl"
         :on-remove="handleRemove"
@@ -76,7 +76,7 @@
 <script>
 import { createCtFileBatch } from '@/api/lillia-file-batch'
 import { addCtFileWithBatch, deleteCtFileWithBatch } from '@/api/lillia-file'
-import add from '@/api/tools/localStorage'
+import uploadPath from '@/api/storage'
 import { getToken } from '@/utils/auth'
 
 export default {
@@ -110,7 +110,7 @@ export default {
       uploadFailNum: 0,
       unUploadNum: 0,
       percentage: 0,
-      add,
+      uploadPath,
       dialogFileUrl: '',
       dialogVisible: false
     }
