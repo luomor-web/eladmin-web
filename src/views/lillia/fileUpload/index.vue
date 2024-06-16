@@ -103,7 +103,7 @@ export default {
       },
       loading: false,
       allUploadType: null,
-      ctFileBatchId: 0,
+      lilliaFileBatchId: 0,
       updateBatch: false,
       uploadTotalNum: 0,
       uploadSuccessNum: 0,
@@ -147,7 +147,7 @@ export default {
       return date
     },
     addLilliaFileBatch() {
-      if (this.ctFileBatchId > 0) {
+      if (this.lilliaFileBatchId > 0) {
         this.$notify.warning({
           title: '已存在',
           message: '上传批次已存在，可以上传文件了'
@@ -160,12 +160,12 @@ export default {
             .then(response => {
               /*
               createTime: 1599446451
-              ctFileBatchId: 1
+              lilliaFileBatchId: 1
               status: 0
               updateTime: 1599446451
               uploadName: "批次-2020-09-07 10:40:01-80733"*/
               console.log(response)
-              this.ctFileBatchId = response.data.data.ctFileBatchId
+              this.lilliaFileBatchId = response.lilliaFileBatchId
               this.dialogFormVisible = false
               this.$notify.success({
                 title: '成功',
@@ -177,14 +177,14 @@ export default {
               console.log(response)
               this.$notify.error({
                 title: '失败',
-                message: response.data.errmsg
+                message: response.message
               })
             })
         }
       })
     },
     submitUpload() {
-      if (this.ctFileBatchId === 0) {
+      if (this.lilliaFileBatchId === 0) {
         this.$message({
           showClose: true,
           message: '请先新增批次',
@@ -197,7 +197,7 @@ export default {
     handleRemove(file, fileList) {
       this.uploadTotalNum = fileList.length
       const updateNum = {
-        ctFileBatchId: this.ctFileBatchId,
+        lilliaFileBatchId: this.lilliaFileBatchId,
         localPath: file.url,
         uploadTotalNum: this.uploadTotalNum
       }
@@ -257,7 +257,7 @@ export default {
       this.unUploadNum = this.uploadTotalNum - this.uploadSuccessNum - this.uploadFailNum
 
       const dataFile = {
-        ctFileBatchId: this.ctFileBatchId,
+        lilliaFileBatchId: this.lilliaFileBatchId,
         fileName: file.name,
         fileSize: file.size,
         fileType: this.dataForm.uploadType,
