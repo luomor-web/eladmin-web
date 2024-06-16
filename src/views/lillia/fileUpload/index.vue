@@ -212,7 +212,7 @@ export default {
         .catch(response => {
           this.$notify.error({
             title: '失败',
-            message: response.data.errmsg
+            message: response.message
           })
         })
       console.log(file, fileList)
@@ -243,9 +243,10 @@ export default {
       status: (...)
       uid: (...)
       url: (...)*/
-      if (response.errno === 0) {
+      console.log(response)
+      if (response.id > 0) {
         this.uploadSuccessNum++
-        console.log(response.data.url)
+        console.log(response.path)
       } else {
         this.uploadFailNum++
         this.$notify.error({
@@ -267,8 +268,8 @@ export default {
         uploadFailNum: this.uploadFailNum,
         unUploadNum: this.unUploadNum
       }
-      if (response.errno === 0) {
-        dataFile.filePath = response.data.url
+      if (response.id > 0) {
+        dataFile.filePath = process.env.VUE_APP_BASE_API + response.path
       }
       addLilliaFileWithBatch(dataFile)
         .then(response => {
@@ -281,7 +282,7 @@ export default {
         .catch(response => {
           this.$notify.error({
             title: '失败',
-            message: response.data.errmsg
+            message: response.message
           })
         })
     }
