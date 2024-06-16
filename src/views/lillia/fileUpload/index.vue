@@ -269,7 +269,7 @@ export default {
         unUploadNum: this.unUploadNum
       }
       if (response.id > 0) {
-        dataFile.filePath = process.env.VUE_APP_BASE_API + response.path
+        dataFile.filePath = process.env.VUE_APP_BASE_API + response.path.replace('/storage', '')
       }
       addLilliaFileWithBatch(dataFile)
         .then(response => {
