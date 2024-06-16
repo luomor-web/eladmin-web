@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function listCtFile(query) {
+export function listLilliaFile(query) {
   return request({
     url: 'bsc/lillia-file/list',
     method: 'get',
@@ -8,7 +8,7 @@ export function listCtFile(query) {
   })
 }
 
-export function createCtFile(data) {
+export function createLilliaFile(data) {
   return request({
     url: 'bsc/lillia-file/create',
     method: 'post',
@@ -16,7 +16,7 @@ export function createCtFile(data) {
   })
 }
 
-export function addCtFileWithBatch(data) {
+export function addLilliaFileWithBatch(data) {
   return request({
     url: 'bsc/lillia-file/addWithBatch',
     method: 'post',
@@ -24,7 +24,7 @@ export function addCtFileWithBatch(data) {
   })
 }
 
-export function deleteCtFileWithBatch(data) {
+export function deleteLilliaFileWithBatch(data) {
   return request({
     url: 'bsc/lillia-file/deleteWithBatch',
     method: 'post',
@@ -32,7 +32,7 @@ export function deleteCtFileWithBatch(data) {
   })
 }
 
-export function readminCtFile(data) {
+export function readminLilliaFile(data) {
   return request({
     url: 'bsc/lillia-file/readmin',
     method: 'get',
@@ -40,7 +40,7 @@ export function readminCtFile(data) {
   })
 }
 
-export function updateCtFile(data) {
+export function updateLilliaFile(data) {
   return request({
     url: 'bsc/lillia-file/update',
     method: 'post',
@@ -48,7 +48,7 @@ export function updateCtFile(data) {
   })
 }
 
-export function deleteCtFile(data) {
+export function deleteLilliaFile(data) {
   return request({
     url: 'bsc/lillia-file/delete',
     method: 'post',

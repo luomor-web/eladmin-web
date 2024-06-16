@@ -23,7 +23,7 @@
             <el-input v-model="dataForm.uploadName" style="width:300px" maxlength="32" />
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="addCtFileBatch">新建上传批次号</el-button>
+            <el-button type="primary" @click="addLilliaFileBatch">新建上传批次号</el-button>
           </el-form-item>
         </el-form>
         <el-tag>按批次进行Excel读取</el-tag>
@@ -74,8 +74,8 @@
 </style>
 
 <script>
-import { createCtFileBatch } from '@/api/lillia-file-batch'
-import { addCtFileWithBatch, deleteCtFileWithBatch } from '@/api/lillia-file'
+import { createLilliaFileBatch } from '@/api/lillia-file-batch'
+import { addLilliaFileWithBatch, deleteLilliaFileWithBatch } from '@/api/lillia-file'
 import { uploadPath } from '@/api/storage'
 import { getToken } from '@/utils/auth'
 
@@ -146,7 +146,7 @@ export default {
       var date = y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d) + ' ' + date1.toTimeString().substr(0, 8)
       return date
     },
-    addCtFileBatch() {
+    addLilliaFileBatch() {
       if (this.ctFileBatchId > 0) {
         this.$notify.warning({
           title: '已存在',
@@ -156,7 +156,7 @@ export default {
       }
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
-          createCtFileBatch(this.dataForm)
+          createLilliaFileBatch(this.dataForm)
             .then(response => {
               /*
               createTime: 1599446451
@@ -198,7 +198,7 @@ export default {
         localPath: file.url,
         uploadTotalNum: this.uploadTotalNum
       }
-      deleteCtFileWithBatch(updateNum)
+      deleteLilliaFileWithBatch(updateNum)
         .then(response => {
           this.dialogFormVisible = false
           this.$notify.success({
@@ -267,7 +267,7 @@ export default {
       if (response.errno === 0) {
         dataFile.filePath = response.data.url
       }
-      addCtFileWithBatch(dataFile)
+      addLilliaFileWithBatch(dataFile)
         .then(response => {
           this.dialogFormVisible = false
           this.$notify.success({

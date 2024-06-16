@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function listCtFileBatch(query) {
+export function listLilliaFileBatch(query) {
   return request({
     url: 'bsc/lillia-file-batch/list',
     method: 'get',
@@ -8,7 +8,7 @@ export function listCtFileBatch(query) {
   })
 }
 
-export function createCtFileBatch(data) {
+export function createLilliaFileBatch(data) {
   return request({
     url: 'bsc/lillia-file-batch/create',
     method: 'post',
@@ -16,7 +16,7 @@ export function createCtFileBatch(data) {
   })
 }
 
-export function readExcelCtFileBatch(data) {
+export function readExcelLilliaFileBatch(data) {
   return request({
     url: 'bsc/lillia-file-batch/readExcel',
     method: 'post',
@@ -24,7 +24,7 @@ export function readExcelCtFileBatch(data) {
   })
 }
 
-export function readminCtFileBatch(data) {
+export function readminLilliaFileBatch(data) {
   return request({
     url: 'bsc/lillia-file-batch/readmin',
     method: 'get',
@@ -32,7 +32,7 @@ export function readminCtFileBatch(data) {
   })
 }
 
-export function updateCtFileBatch(data) {
+export function updateLilliaFileBatch(data) {
   return request({
     url: 'bsc/lillia-file-batch/update',
     method: 'post',
@@ -40,7 +40,7 @@ export function updateCtFileBatch(data) {
   })
 }
 
-export function updateNumCtFileBatch(data) {
+export function updateNumLilliaFileBatch(data) {
   return request({
     url: 'bsc/lillia-file-batch/updateNum',
     method: 'post',
@@ -48,7 +48,7 @@ export function updateNumCtFileBatch(data) {
   })
 }
 
-export function deleteCtFileBatch(data) {
+export function deleteLilliaFileBatch(data) {
   return request({
     url: 'bsc/lillia-file-batch/delete',
     method: 'post',
