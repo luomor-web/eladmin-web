@@ -262,7 +262,7 @@ export default {
         fileName: file.name,
         fileSize: file.size,
         fileType: this.dataForm.uploadType,
-        localPath: file.url,
+        localPath: response.realName,
         uploadSuccessNum: this.uploadSuccessNum,
         uploadTotalNum: this.uploadTotalNum,
         uploadFailNum: this.uploadFailNum,
