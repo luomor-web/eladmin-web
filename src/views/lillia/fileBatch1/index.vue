@@ -88,11 +88,6 @@
         <el-table-column prop="comment" label="comment" />
         <el-table-column prop="createTime" label="createTime" />
         <el-table-column prop="updateTime" label="updateTime" />
-        <el-table-column align="center" label="操作" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
-            <el-button type="primary" @click="handleReadExcel(scope.row)">读取文件</el-button>
-          </template>
-        </el-table-column>
         <el-table-column v-if="checkPer(['admin','lilliaFileBatch:edit','lilliaFileBatch:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
@@ -109,7 +104,6 @@
 </template>
 
 <script>
-import { readExcelLilliaFileBatch } from '@/api/lillia-file-batch'
 import crudLilliaFileBatch from '@/api/lilliaFileBatch'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 // import rrOperation from '@crud/RR.operation'
@@ -190,29 +184,6 @@ export default {
     // 钩子：在获取表格数据之前执行，false 则代表不获取数据
     [CRUD.HOOK.beforeRefresh]() {
       return true
-    },
-    handleReadExcel(row) {
-      const dataForm = Object.assign({}, row)
-      readExcelLilliaFileBatch(dataForm)
-        .then(() => {
-          for (const v of this.list) {
-            if (v.lilliaFileBatchId === dataForm.lilliaFileBatchId) {
-              const index = this.list.indexOf(v)
-              this.list.splice(index, 1, dataForm)
-              break
-            }
-          }
-          this.$notify.success({
-            title: '成功',
-            message: '读取文件已开始执行，可稍后刷新查看'
-          })
-        })
-        .catch(response => {
-          this.$notify.error({
-            title: '失败',
-            message: response.message
-          })
-        })
     }
   }
 }
