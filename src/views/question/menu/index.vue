@@ -2,6 +2,10 @@
   <div class="app-container">
     <!--工具栏-->
     <div class="head-container">
+      <div v-if="crud.props.searchToggle">
+        <el-input v-model="query.pid" clearable size="small" placeholder="请输入pid" style="width: 200px;" class="filter-item" @keyup.enter.native="crud.toQuery" />
+        <rrOperation />
+      </div>
       <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
       <crudOperation :permission="permission" />
       <!--表单组件-->
@@ -66,7 +70,7 @@
 <script>
 import crudQuestionMenu from '@/api/questionMenu'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
-// import rrOperation from '@crud/RR.operation'
+import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
@@ -74,10 +78,16 @@ import pagination from '@crud/Pagination'
 const defaultForm = { id: null, name: null, status: null, createTime: null, updateTime: null, pid: null, category: null, sort: null }
 export default {
   name: 'QuestionMenu',
-  components: { pagination, crudOperation, udOperation },
+  components: { pagination, crudOperation, udOperation, rrOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
-    return CRUD({ title: '题目分类', url: 'bsc/questionMenu', idField: 'id', sort: 'id,desc', crudMethod: { ...crudQuestionMenu }})
+    return CRUD({
+      title: '题目分类',
+      url: 'bsc/questionMenu',
+      idField: 'id',
+      sort: 'id,desc',
+      crudMethod: { ...crudQuestionMenu }
+    })
   },
   data() {
     return {

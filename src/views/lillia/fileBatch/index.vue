@@ -195,13 +195,6 @@ export default {
       const dataForm = Object.assign({}, row)
       readExcelLilliaFileBatch(dataForm)
         .then(() => {
-          for (const v of this.list) {
-            if (v.lilliaFileBatchId === dataForm.lilliaFileBatchId) {
-              const index = this.list.indexOf(v)
-              this.list.splice(index, 1, dataForm)
-              break
-            }
-          }
           this.$notify.success({
             title: '成功',
             message: '读取文件已开始执行，可稍后刷新查看'
