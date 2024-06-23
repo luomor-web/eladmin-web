@@ -61,6 +61,9 @@
           <el-form-item label="updateTime" prop="updateTime">
             <el-input v-model="form.updateTime" style="width: 370px;" />
           </el-form-item>
+          <el-form-item label="questionMenuId" prop="questionMenuId">
+            <el-input v-model="form.questionMenuId" style="width: 370px;" />
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button type="text" @click="crud.cancelCU">取消</el-button>
@@ -88,6 +91,7 @@
         <el-table-column prop="comment" label="comment" />
         <el-table-column prop="createTime" label="createTime" />
         <el-table-column prop="updateTime" label="updateTime" />
+        <el-table-column prop="questionMenuId" label="questionMenuId" />
         <el-table-column align="center" label="操作" class-name="small-padding fixed-width">
           <template slot-scope="scope">
             <el-button type="primary" @click="handleReadExcel(scope.row)">读取文件</el-button>
@@ -182,6 +186,9 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         updateTime: [
+          { required: true, message: '不能为空', trigger: 'blur' }
+        ],
+        questionMenuId: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ]
       }}
