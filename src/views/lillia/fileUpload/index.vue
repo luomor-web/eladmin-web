@@ -22,6 +22,9 @@
           <el-form-item label="上传批次号" prop="uploadName">
             <el-input v-model="dataForm.uploadName" style="width:300px" maxlength="32" />
           </el-form-item>
+          <el-form-item label="questionMenuId" prop="questionMenuId">
+            <el-input v-model="dataForm.questionMenuId" style="width:300px" maxlength="32" />
+          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="addLilliaFileBatch">新建上传批次号</el-button>
           </el-form-item>
@@ -85,7 +88,8 @@ export default {
     return {
       dataForm: {
         uploadName: '',
-        uploadType: ''
+        uploadType: '',
+        questionMenuId: 6
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -98,6 +102,9 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         uploadType: [
+          { required: true, message: '不能为空', trigger: 'blur' }
+        ],
+        questionMenuId: [
           { required: true, message: '不能为空', trigger: 'blur' }
         ]
       },
