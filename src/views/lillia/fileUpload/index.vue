@@ -141,7 +141,7 @@ export default {
       this.loading = true
       this.allUploadType = [
         { id: 1, name: 'Exam1' },
-        { id: 2, name: 'Exam2' }
+        { id: 2, name: 'ExamFinal' }
       ]
       this.loading = false
     },

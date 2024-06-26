@@ -7,7 +7,7 @@
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="500px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
-          <el-form-item label="ID">
+          <el-form-item label="lilliaFileBatchId">
             <el-input v-model="form.lilliaFileBatchId" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="uploadName" prop="uploadName">
@@ -73,7 +73,7 @@
       <!--表格渲染-->
       <el-table ref="table" v-loading="crud.loading" :data="crud.data" size="small" style="width: 100%;" @selection-change="crud.selectionChangeHandler">
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="lilliaFileBatchId" label="ID" />
+        <el-table-column prop="lilliaFileBatchId" label="lilliaFileBatchId" />
         <el-table-column prop="uploadName" label="uploadName" />
         <el-table-column prop="uploadType" label="uploadType" />
         <el-table-column prop="num" label="num" />
@@ -92,11 +92,6 @@
         <el-table-column prop="createTime" label="createTime" />
         <el-table-column prop="updateTime" label="updateTime" />
         <el-table-column prop="questionMenuId" label="questionMenuId" />
-        <el-table-column align="center" label="操作" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
-            <el-button type="primary" @click="handleReadExcel(scope.row)">读取文件</el-button>
-          </template>
-        </el-table-column>
         <el-table-column v-if="checkPer(['admin','lilliaFileBatch:edit','lilliaFileBatch:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation
@@ -113,7 +108,6 @@
 </template>
 
 <script>
-import { readExcelLilliaFileBatch } from '@/api/lillia-file-batch'
 import crudLilliaFileBatch from '@/api/lilliaFileBatch'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 // import rrOperation from '@crud/RR.operation'
@@ -121,7 +115,7 @@ import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
 
-const defaultForm = { lilliaFileBatchId: null, uploadName: null, uploadType: null, num: null, uploadTotalNum: null, uploadSuccessNum: null, uploadFailNum: null, uploadRemoveNum: null, unUploadNum: null, readNum: null, readRet: null, status: null, readStatus: null, operatorId: null, operator: null, comment: null, createTime: null, updateTime: null }
+const defaultForm = { lilliaFileBatchId: null, uploadName: null, uploadType: null, num: null, uploadTotalNum: null, uploadSuccessNum: null, uploadFailNum: null, uploadRemoveNum: null, unUploadNum: null, readNum: null, readRet: null, status: null, readStatus: null, operatorId: null, operator: null, comment: null, createTime: null, updateTime: null, questionMenuId: null }
 export default {
   name: 'LilliaFileBatch',
   components: { pagination, crudOperation, udOperation },
@@ -141,7 +135,7 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         uploadType: [
-          { required: true, message: '不能为空', trigger: 'blur' }
+          { required: true, message: 'uploadType不能为空', trigger: 'blur' }
         ],
         num: [
           { required: true, message: '不能为空', trigger: 'blur' }
@@ -177,7 +171,7 @@ export default {
           { required: true, message: '不能为空', trigger: 'blur' }
         ],
         operator: [
-          { required: true, message: '不能为空', trigger: 'blur' }
+          { required: true, message: 'operator不能为空', trigger: 'blur' }
         ],
         comment: [
           { required: true, message: '不能为空', trigger: 'blur' }
@@ -197,22 +191,6 @@ export default {
     // 钩子：在获取表格数据之前执行，false 则代表不获取数据
     [CRUD.HOOK.beforeRefresh]() {
       return true
-    },
-    handleReadExcel(row) {
-      const dataForm = Object.assign({}, row)
-      readExcelLilliaFileBatch(dataForm)
-        .then(() => {
-          this.$notify.success({
-            title: '成功',
-            message: '读取文件已开始执行，可稍后刷新查看'
-          })
-        })
-        .catch(response => {
-          this.$notify.error({
-            title: '失败',
-            message: response.message
-          })
-        })
     }
   }
 }
